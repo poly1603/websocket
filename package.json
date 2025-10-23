@@ -1,0 +1,16 @@
+{
+  "name": "@ldesign/websocket",
+  "version": "0.1.0",
+  "description": "WebSocket 客户端 - 自动重连、心跳检测、消息队列",
+  "type": "module",
+  "main": "./lib/index.cjs",
+  "module": "./es/index.js",
+  "types": "./es/index.d.ts",
+  "scripts": {
+    "build": "ldesign-builder build -f esm,cjs,dts"
+  },
+  "dependencies": {
+    "@ldesign/shared": "workspace:*",
+    "@ldesign/logger": "workspace:*"
+  }
+}
