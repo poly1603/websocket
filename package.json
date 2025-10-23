@@ -1,16 +1,101 @@
 {
   "name": "@ldesign/websocket",
   "version": "0.1.0",
-  "description": "WebSocket 客户端 - 自动重连、心跳检测、消息队列",
+  "description": "生产级 WebSocket 客户端 - 自动重连、心跳检测、消息队列、加密传输",
+  "keywords": [
+    "ldesign",
+    "websocket",
+    "socket",
+    "realtime",
+    "typescript",
+    "vue",
+    "reconnect",
+    "heartbeat"
+  ],
+  "author": "LDesign Team",
+  "license": "MIT",
+  "homepage": "https://github.com/poly1603/websocket#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/poly1603/websocket.git"
+  },
+  "bugs": {
+    "url": "https://github.com/poly1603/websocket/issues"
+  },
   "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./es/index.d.ts",
+      "import": "./es/index.js",
+      "require": "./lib/index.cjs"
+    },
+    "./core": {
+      "types": "./es/index.core.d.ts",
+      "import": "./es/index.core.js",
+      "require": "./lib/index.core.cjs"
+    },
+    "./vue": {
+      "types": "./es/vue/index.d.ts",
+      "import": "./es/vue/index.js",
+      "require": "./lib/vue/index.cjs"
+    }
+  },
   "main": "./lib/index.cjs",
   "module": "./es/index.js",
   "types": "./es/index.d.ts",
+  "unpkg": "./dist/index.min.js",
+  "jsdelivr": "./dist/index.min.js",
+  "files": [
+    "README.md",
+    "LICENSE",
+    "package.json",
+    "es",
+    "lib",
+    "dist",
+    "src"
+  ],
   "scripts": {
-    "build": "ldesign-builder build -f esm,cjs,dts"
+    "build": "ldesign-builder build -f esm,cjs,dts",
+    "dev": "ldesign-builder watch",
+    "type-check": "tsc --noEmit",
+    "lint": "eslint . --fix",
+    "lint:check": "eslint .",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "clean": "rimraf es lib dist coverage",
+    "prepublishOnly": "pnpm run clean && pnpm run build"
   },
   "dependencies": {
     "@ldesign/shared": "workspace:*",
-    "@ldesign/logger": "workspace:*"
+    "@ldesign/logger": "workspace:*",
+    "@ldesign/crypto": "workspace:*"
+  },
+  "peerDependencies": {
+    "vue": "^3.3.0",
+    "socket.io-client": "^4.0.0"
+  },
+  "peerDependenciesMeta": {
+    "vue": {
+      "optional": true
+    },
+    "socket.io-client": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^6.0.0",
+    "@ldesign/builder": "workspace:*",
+    "@types/node": "^22.0.0",
+    "@vitest/coverage-v8": "^2.1.9",
+    "@vitest/ui": "^2.0.0",
+    "eslint": "^9.18.0",
+    "jsdom": "^24.0.0",
+    "rimraf": "^5.0.0",
+    "typescript": "^5.7.3",
+    "vitest": "^2.0.0",
+    "vue": "^3.5.0"
   }
 }
