@@ -30,15 +30,45 @@
       "import": "./es/index.js",
       "require": "./lib/index.cjs"
     },
-    "./core": {
-      "types": "./es/index.core.d.ts",
-      "import": "./es/index.core.js",
-      "require": "./lib/index.core.cjs"
+    "./adapters": {
+      "types": "./es/adapters/index.d.ts",
+      "import": "./es/adapters/index.js",
+      "require": "./lib/adapters/index.cjs"
+    },
+    "./adapters/*": {
+      "types": "./es/adapters/*.d.ts",
+      "import": "./es/adapters/*.js",
+      "require": "./lib/adapters/*.cjs"
+    },
+    "./core/*": {
+      "types": "./es/core/*.d.ts",
+      "import": "./es/core/*.js",
+      "require": "./lib/core/*.cjs"
+    },
+    "./types": {
+      "types": "./es/types/index.d.ts",
+      "import": "./es/types/index.js",
+      "require": "./lib/types/index.cjs"
+    },
+    "./types/*": {
+      "types": "./es/types/*.d.ts",
+      "import": "./es/types/*.js",
+      "require": "./lib/types/*.cjs"
+    },
+    "./utils/*": {
+      "types": "./es/utils/*.d.ts",
+      "import": "./es/utils/*.js",
+      "require": "./lib/utils/*.cjs"
     },
     "./vue": {
       "types": "./es/vue/index.d.ts",
       "import": "./es/vue/index.js",
       "require": "./lib/vue/index.cjs"
+    },
+    "./vue/*": {
+      "types": "./es/vue/*.d.ts",
+      "import": "./es/vue/*.js",
+      "require": "./lib/vue/*.cjs"
     }
   },
   "main": "./lib/index.cjs",
@@ -52,8 +82,7 @@
     "package.json",
     "es",
     "lib",
-    "dist",
-    "src"
+    "dist"
   ],
   "scripts": {
     "build": "ldesign-builder build",
@@ -67,9 +96,7 @@
     "test": "vitest",
     "test:ui": "vitest --ui",
     "test:run": "vitest run",
-    "test:coverage": "vitest run --coverage",
-    "clean": "rimraf es lib dist coverage",
-    "prepublishOnly": "pnpm run clean && pnpm run build"
+    "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
     "@ldesign/shared": "workspace:*",
@@ -79,14 +106,6 @@
   "peerDependencies": {
     "vue": "^3.3.0",
     "socket.io-client": "^4.0.0"
-  },
-  "peerDependenciesMeta": {
-    "vue": {
-      "optional": true
-    },
-    "socket.io-client": {
-      "optional": true
-    }
   },
   "devDependencies": {
     "@antfu/eslint-config": "^6.0.0",
@@ -100,5 +119,13 @@
     "typescript": "^5.7.3",
     "vitest": "^2.0.0",
     "vue": "^3.5.0"
+  },
+  "peerDependenciesMeta": {
+    "vue": {
+      "optional": true
+    },
+    "socket.io-client": {
+      "optional": true
+    }
   }
 }

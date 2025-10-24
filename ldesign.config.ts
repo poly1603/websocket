@@ -51,4 +51,11 @@ export default defineConfig({
     declaration: true,
     declarationMap: true,
   },
+
+  // UMD构建配置(顶层，确保被识别)
+  umd: {
+    enabled: true,
+    entry: 'src/index-lib.ts',
+    name: 'LDesignWebSocket',
+  },
 })
