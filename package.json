@@ -1,7 +1,7 @@
 {
   "name": "@ldesign/websocket",
-  "version": "0.1.0",
-  "description": "生产级 WebSocket 客户端 - 自动重连、心跳检测、消息队列、加密传输",
+  "version": "0.2.0",
+  "description": "企业级 WebSocket 客户端 - 自动重连、心跳检测、消息队列、加密传输、压缩、ACK确认、RPC调用、中间件系统、性能监控",
   "keywords": [
     "ldesign",
     "websocket",
@@ -10,7 +10,16 @@
     "typescript",
     "vue",
     "reconnect",
-    "heartbeat"
+    "heartbeat",
+    "encryption",
+    "compression",
+    "ack",
+    "rpc",
+    "middleware",
+    "monitoring",
+    "router",
+    "batch",
+    "deduplication"
   ],
   "author": "LDesign Team",
   "license": "MIT",

@@ -4,7 +4,7 @@
  * 从上层 Provider 或插件中注入客户端实例
  */
 
-import { inject } from 'vue'
+import { inject, provide } from 'vue'
 import type { WebSocketClient } from '../core/websocket-client'
 import type { WebSocketPluginOptions } from '../types/vue'
 import { WEBSOCKET_CLIENT_KEY, WEBSOCKET_CONFIG_KEY } from './plugin'

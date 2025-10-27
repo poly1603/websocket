@@ -1,7 +1,8 @@
 /**
  * 连接管理器
  * 
- * 管理 WebSocket 连接状态和生命周期
+ * 管理 WebSocket 连接状态和生命周期，跟踪连接指标和状态变化
+ * 负责状态转换、指标统计和事件通知
  */
 
 import type { ConnectionState, ConnectionMetrics } from '../types'
@@ -9,13 +10,31 @@ import { EventEmitter } from './event-emitter'
 
 /**
  * 连接管理器类
+ * 
+ * 核心功能：
+ * - 连接状态管理（连接中、已连接、断开中、已断开、重连中）
+ * - 连接指标统计（消息数、延迟、重连次数等）
+ * - 状态变化事件通知
+ * - 连接持续时间跟踪
  */
 export class ConnectionManager {
+  /** 当前连接状态 */
   private state: ConnectionState = 'disconnected'
+
+  /** 连接指标数据 */
   private metrics: ConnectionMetrics
+
+  /** 事件发射器，用于通知状态变化 */
   private eventEmitter: EventEmitter
+
+  /** 连接开始时间戳（毫秒） */
   private connectionStartTime: number = 0
 
+  /**
+   * 创建连接管理器
+   * 
+   * @param eventEmitter - 事件发射器实例，用于发布状态变化事件
+   */
   constructor(eventEmitter: EventEmitter) {
     this.eventEmitter = eventEmitter
     this.metrics = {

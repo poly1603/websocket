@@ -16,6 +16,30 @@ export { ReconnectManager } from './core/reconnect-manager'
 export { HeartbeatManager } from './core/heartbeat-manager'
 export { MessageQueue } from './core/message-queue'
 export { EventEmitter } from './core/event-emitter'
+export { EncryptionManager } from './core/encryption-manager'
+export { CompressionManager } from './core/compression-manager'
+export { AckManager } from './core/ack-manager'
+export { RpcManager } from './core/rpc-manager'
+export { PerformanceMonitor } from './core/monitor'
+export { MessageRouter } from './core/router'
+export { BatchSender } from './core/batch-sender'
+export { MessageDeduplicator } from './core/deduplicator'
+
+// ============ 错误类 ============
+export {
+  WebSocketError,
+  ConnectionError,
+  TimeoutError,
+  ProtocolError,
+  QueueFullError,
+  EncryptionError,
+  CompressionError,
+  StateError,
+  AuthenticationError,
+  MessageSizeError,
+  isRetryableError,
+  createErrorFromNative,
+} from './core/errors'
 
 // ============ 适配器 ============
 export {
@@ -23,6 +47,24 @@ export {
   NativeAdapter,
   AdapterFactory,
 } from './adapters'
+
+// ============ 中间件 ============
+export {
+  MiddlewareManager,
+  createLoggerMiddleware,
+  createValidatorMiddleware,
+  createSchemaValidator,
+  createTransformerMiddleware,
+  ValidationRules,
+  Transformers,
+  type Middleware,
+  type MiddlewareContext,
+  type LoggerMiddlewareOptions,
+  type ValidatorMiddlewareOptions,
+  type ValidationRule,
+  type TransformerMiddlewareOptions,
+  type TransformFunction,
+} from './middlewares'
 
 // ============ 类型 ============
 export type * from './types'
