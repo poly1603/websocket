@@ -4,7 +4,7 @@ export default defineConfig({
   input: 'src/index.ts',
 
   output: {
-    format: ['esm', 'cjs', 'umd'],
+    format: ['esm', 'cjs', ],
     esm: {
       dir: 'es',
       preserveStructure: true,
@@ -14,6 +14,7 @@ export default defineConfig({
       preserveStructure: true,
     },
     umd: {
+      enabled: false,
       dir: 'dist',
       name: 'LDesignWebSocket',
       entry: 'src/index-lib.ts',
