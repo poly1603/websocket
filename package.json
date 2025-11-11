@@ -54,6 +54,16 @@
       "import": "./es/core/*.js",
       "require": "./lib/core/*.cjs"
     },
+    "./middlewares": {
+      "types": "./es/middlewares/index.d.ts",
+      "import": "./es/middlewares/index.js",
+      "require": "./lib/middlewares/index.cjs"
+    },
+    "./middlewares/*": {
+      "types": "./es/middlewares/*.d.ts",
+      "import": "./es/middlewares/*.js",
+      "require": "./lib/middlewares/*.cjs"
+    },
     "./types": {
       "types": "./es/types/index.d.ts",
       "import": "./es/types/index.js",
@@ -90,8 +100,7 @@
     "LICENSE",
     "package.json",
     "es",
-    "lib",
-    "dist"
+    "lib"
   ],
   "scripts": {
     "build": "ldesign-builder build",
